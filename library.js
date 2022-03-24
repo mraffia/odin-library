@@ -14,6 +14,13 @@ Book.prototype.idSet = function() {
 Book.prototype.info = function() {
     return this.title + " by " + this.author + ", " + this.pages + " page(s).";
 }
+Book.prototype.toggleRead = function() {
+    if (this.haveRead === 'read') {
+        this.haveRead = 'not-read';
+    } else {
+        this.haveRead = 'read';
+    }
+}
 
 function addBookToLibrary(title, author, pages, haveRead) {
     const newBook = new Book(title, author, pages, haveRead);
@@ -68,6 +75,7 @@ function displayBooks() {
 
         for (let i = 0; i < deleteBooks.length; i++) {
             deleteBooks[i].addEventListener('click', deleteBookCard);
+            readBooks[i].addEventListener('click', readBookCard);
         }
     } else {
         const emptyText = document.createElement('p');
@@ -105,6 +113,24 @@ function deleteBookCard(e) {
         }
         books.textContent = '';
         displayBooks();
+    }
+}
+
+function readBookCard(e) {
+    let selectedBook;
+
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].id === parseInt(e.target.id)) {
+            selectedBook = myLibrary[i];
+        }
+    }
+
+    selectedBook.toggleRead();
+
+    if (selectedBook.haveRead === 'read') {
+        e.target.textContent = "Have Read";
+    } else {
+        e.target.textContent = "Not Yet Read";
     }
 
 }
