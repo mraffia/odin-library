@@ -6,14 +6,7 @@ function Book(title, author, pages, haveRead) {
     this.pages = pages;
     this.haveRead = haveRead;
     this.info = function() {
-        let readStatus = '';
-        if (haveRead === "read") {
-            readStatus = 'have read it';
-        } else {
-            readStatus = 'not yet read';
-        }
-
-        return this.title + " by " + this.author + ", " + this.pages + " page(s), " + readStatus + ".";
+        return this.title + " by " + this.author + ", " + this.pages + " page(s).";
     }
 }
 
@@ -32,14 +25,36 @@ const addButton = document.querySelector('.button-con');
 
 let bookFormData = new FormData(bookForm);
 
+function createBookCard(bookObject) {
+    const bookCard = document.createElement('div');
+    bookCard.classList.add('book-card');
+
+    const cardText = document.createElement('p');
+    cardText.textContent = bookObject.info();
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-book');
+    deleteButton.textContent = "Delete Book";
+
+    const readButton = document.createElement('button');
+    readButton.classList.add('read-book');
+
+    if (bookObject.haveRead === 'read') {
+        readButton.textContent = "Have Read";
+    } else {
+        readButton.textContent = "Not Yet Read";
+    }
+
+    bookCard.appendChild(cardText);
+    bookCard.appendChild(deleteButton);
+    bookCard.appendChild(readButton);
+    books.appendChild(bookCard);
+}
+
 function displayBooks() {
     if (myLibrary.length > 0) {
         for(let i = 0; i < myLibrary.length; i++) {
-            const div = document.createElement('div');
-            div.classList.add('book-card');
-
-            div.textContent = myLibrary[i].info();
-            books.appendChild(div);
+            createBookCard(myLibrary[i]);
         }
     }
 }
@@ -48,11 +63,7 @@ function addBooks(event) {
     event.preventDefault();
 
     addBookToLibrary(title.value, author.value, pages.value, readStatus.value);
-    const div = document.createElement('div');
-    div.classList.add('book-card');
-
-    div.textContent = myLibrary[myLibrary.length - 1].info();
-    books.appendChild(div);
+    createBookCard(myLibrary[myLibrary.length - 1]);
 
     bookForm.reset();
 }

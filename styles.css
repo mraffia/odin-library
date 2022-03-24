@@ -36,6 +36,7 @@ h3 {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
     align-items: center;
+    justify-content: center;
 }
 
 input {
@@ -50,8 +51,10 @@ input {
 .books {
     display: grid;
     width: 50vw;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
     gap: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 .book-card {
@@ -61,8 +64,15 @@ input {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     border-left: 4px solid lightblue;
-    display: grid;
     font-weight: bold;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.book-card p {
+    grid-column: 1 / -1;
 }
 
 .footer {
@@ -70,5 +80,4 @@ input {
     align-items: center;
     justify-content: center;
     padding: 32px;
-    margin-top: auto;
 }
