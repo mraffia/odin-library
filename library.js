@@ -57,6 +57,7 @@ function createBookCard(bookObject) {
 
     if (bookObject.haveRead === 'read') {
         readButton.textContent = "Have Read";
+        readButton.classList.add('have-read');
     } else {
         readButton.textContent = "Not Yet Read";
     }
@@ -129,8 +130,10 @@ function readBookCard(e) {
 
     if (selectedBook.haveRead === 'read') {
         e.target.textContent = "Have Read";
+        e.target.classList.add('have-read');
     } else {
         e.target.textContent = "Not Yet Read";
+        e.target.classList.remove('have-read');
     }
 
 }
