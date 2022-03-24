@@ -42,6 +42,7 @@ input {
     width: 90%;
 }
 
+.pages-con input,
 .button-con {
     width: 100px;
 }
@@ -61,6 +62,7 @@ input {
     border-radius: 8px;
     border-left: 4px solid lightblue;
     display: grid;
+    font-weight: bold;
 }
 
 .footer {
@@ -68,4 +70,5 @@ input {
     align-items: center;
     justify-content: center;
     padding: 32px;
+    margin-top: auto;
 }
