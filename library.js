@@ -31,10 +31,11 @@ const books = document.querySelector('.books');
 
 function displayBooks() {
     for(let i = 0; i < myLibrary.length; i++) {
-        const li = document.createElement('li');
+        const div = document.createElement('div');
+        div.classList.add('book-card');
 
-        li.textContent = myLibrary[i].info();
-        books.appendChild(li);
+        div.textContent = myLibrary[i].info();
+        books.appendChild(div);
     }
 }
 
