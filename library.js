@@ -17,7 +17,25 @@ function addBookToLibrary(title, author, pages, haveRead) {
     } else {
         readStatus = 'not yet';
     }
-    
+
     const newBook = new Book(title, author, pages, readStatus);
     myLibrary.push(newBook);
 }
+
+let someBook = new Book('Beluga', 'Raffi', 325, 'have read it');
+myLibrary.push(someBook);
+myLibrary.push(someBook);
+myLibrary.push(someBook);
+
+const books = document.querySelector('.books');
+
+function displayBooks() {
+    for(let i = 0; i < myLibrary.length; i++) {
+        const li = document.createElement('li');
+
+        li.textContent = myLibrary[i].info();
+        books.appendChild(li);
+    }
+}
+
+displayBooks();
