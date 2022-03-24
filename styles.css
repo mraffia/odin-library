@@ -62,7 +62,7 @@ input {
     padding: 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    border-left: 6px solid #4f46e5;
+    border-left: 6px solid #0284c7;
     font-weight: bold;
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -79,6 +79,7 @@ input {
     align-items: center;
     justify-content: center;
     padding: 32px;
+    margin-top: 64px;
 }
 
 .button-con {

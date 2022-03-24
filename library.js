@@ -138,7 +138,6 @@ function readBookCard(e) {
 
 }
 
-addBookToLibrary("Some Book", "Some Author", 42, "not-read");
 displayBooks();
 
 bookForm.addEventListener('submit', addBooks);
