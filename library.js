@@ -5,13 +5,20 @@ function Book(title, author, pages, haveRead) {
     this.author = author;
     this.pages = pages;
     this.haveRead = haveRead;
-    this.info = function() {
-        return this.title + " by " + this.author + ", " + this.pages + " page(s).";
-    }
+}
+
+Book.prototype.idCounter = 0;
+Book.prototype.idSet = function() {
+    this.id = this.idCounter;
+}
+Book.prototype.info = function() {
+    return this.title + " by " + this.author + ", " + this.pages + " page(s).";
 }
 
 function addBookToLibrary(title, author, pages, haveRead) {
     const newBook = new Book(title, author, pages, haveRead);
+    newBook.idSet();
+    Book.prototype.idCounter++;
     myLibrary.push(newBook);
 }
 
@@ -21,9 +28,9 @@ const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
 const readStatus = document.querySelector('#status');
-const addButton = document.querySelector('.button-con');
 
-let bookFormData = new FormData(bookForm);
+const deleteBooks = document.getElementsByClassName('delete-book');
+const readBooks = document.getElementsByClassName('read-book');
 
 function createBookCard(bookObject) {
     const bookCard = document.createElement('div');
@@ -34,10 +41,12 @@ function createBookCard(bookObject) {
 
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('delete-book');
+    deleteButton.setAttribute('id', bookObject.id + '');
     deleteButton.textContent = "Delete Book";
 
     const readButton = document.createElement('button');
     readButton.classList.add('read-book');
+    readButton.setAttribute('id', bookObject.id + '');
 
     if (bookObject.haveRead === 'read') {
         readButton.textContent = "Have Read";
@@ -56,6 +65,15 @@ function displayBooks() {
         for(let i = 0; i < myLibrary.length; i++) {
             createBookCard(myLibrary[i]);
         }
+
+        for (let i = 0; i < deleteBooks.length; i++) {
+            deleteBooks[i].addEventListener('click', deleteBookCard);
+        }
+    } else {
+        const emptyText = document.createElement('p');
+        emptyText.textContent = "Yo, the library is empty. Add some books wil ya?";
+
+        books.appendChild(emptyText);
     }
 }
 
@@ -63,12 +81,35 @@ function addBooks(event) {
     event.preventDefault();
 
     addBookToLibrary(title.value, author.value, pages.value, readStatus.value);
-    createBookCard(myLibrary[myLibrary.length - 1]);
+    
+    books.textContent = '';
+    displayBooks();
 
     bookForm.reset();
 }
 
-addBookToLibrary("Some book", "Some Author", 42, "not-read");
+function deleteBookCard(e) {
+    let selectedBook;
+
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].id === parseInt(e.target.id)) {
+            selectedBook = myLibrary[i];
+        }
+    }
+
+    const confirmDelete = confirm("Are you sure you want to delete the book \"" + selectedBook.title + "\"?");
+    if (confirmDelete) {
+        const bookIndex = myLibrary.indexOf(selectedBook);
+        if (bookIndex > -1) {
+            myLibrary.splice(bookIndex, 1);
+        }
+        books.textContent = '';
+        displayBooks();
+    }
+
+}
+
+addBookToLibrary("Some Book", "Some Author", 42, "not-read");
 displayBooks();
 
 bookForm.addEventListener('submit', addBooks);
