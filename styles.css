@@ -30,6 +30,22 @@ h3 {
     margin-top: 32px;
 }
 
+.form-grid {
+    display: grid;
+    width: 50vw;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    align-items: center;
+}
+
+input {
+    width: 90%;
+}
+
+.button-con {
+    width: 100px;
+}
+
 .books {
     display: grid;
     width: 50vw;
