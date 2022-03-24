@@ -82,14 +82,7 @@ input {
     margin-top: 64px;
 }
 
-.button-con {
-    background-color: #3b82f6;
-    color: #FFFFFF;
-    border: 0;
-    border-radius: 8px;
-    font-weight: 600;
-}
-
+/* Source: https://getcssscan.com/css-buttons-examples */
 .button-con {
     appearance: none;
     background-color: #FAFBFC;
@@ -147,60 +140,9 @@ input {
     display: none;
 }
 
-.delete-book {
-    appearance: none;
-    background-color: #dc2626;
-    border: 1px solid rgba(27, 31, 35, .15);
-    border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    padding: 6px 16px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-
-.delete-book:focus:not(:focus-visible):not(.focus-visible) {
-    box-shadow: none;
-    outline: none;
-}
-
-.delete-book:hover {
-    background-color: #ef4444;
-}
-
-.delete-book:focus {
-    box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
-    outline: none;
-}
-
-.delete-book:disabled {
-    background-color: #fca5a5;
-    border-color: rgba(27, 31, 35, .1);
-    color: rgba(255, 255, 255, .8);
-    cursor: default;
-}
-
-.delete-book:active {
-    background-color: #ef4444;
-    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
-}
-
+.delete-book,
 .read-book {
     appearance: none;
-    background-color: #ca8a04;
     border: 1px solid rgba(27, 31, 35, .15);
     border-radius: 6px;
     box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
@@ -221,32 +163,56 @@ input {
     touch-action: manipulation;
     vertical-align: middle;
     white-space: nowrap;
-  }
-  
+}
+
+.delete-book:focus:not(:focus-visible):not(.focus-visible),
 .read-book:focus:not(:focus-visible):not(.focus-visible) {
     box-shadow: none;
     outline: none;
 }
 
-.read-book:hover {
-    background-color: #eab308;
-}
-
+.delete-book:focus,
 .read-book:focus {
     box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
     outline: none;
 }
 
+.delete-book:disabled,
 .read-book:disabled {
-    background-color: #fde047;
     border-color: rgba(27, 31, 35, .1);
     color: rgba(255, 255, 255, .8);
     cursor: default;
 }
 
+.delete-book:active,
+.read-book:active {
+    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+.delete-book {
+    background-color: #dc2626;
+}
+
+.delete-book:hover,
+.delete-book:active {
+    background-color: #ef4444;
+}
+
+.delete-book:disabled {
+    background-color: #fca5a5;
+}
+
+.read-book {
+    background-color: #ca8a04;
+}
+
+.read-book:hover,
 .read-book:active {
     background-color: #eab308;
-    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+.read-book:disabled {
+    background-color: #fde047;
 }
 
 .have-read {
