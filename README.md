@@ -8,4 +8,4 @@ https://mraffia.github.io/odin-library/
 A library program. You can add or delete books, and change a book's read status.
 
 ### Tools
-HTML, CSS (Flexbox & CSS Grid), and Vanilla Javascript (Objects, object constructors, prototypes).
+HTML, CSS (Flexbox & CSS Grid), and Vanilla Javascript (Objects, object constructors, prototypes, class).

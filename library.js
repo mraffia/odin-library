@@ -1,29 +1,57 @@
 let myLibrary = [];
 
-function Book(title, author, pages, haveRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.haveRead = haveRead;
-}
+// Constructor version
+// function Book(title, author, pages, haveRead) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.haveRead = haveRead;
+// }
 
-Book.prototype.idCounter = 0;
-Book.prototype.idSet = function() {
-    this.id = this.idCounter;
-}
-Book.prototype.info = function() {
-    return this.title + " by " + this.author + ", " + this.pages + " page(s).";
-}
-Book.prototype.toggleRead = function() {
-    if (this.haveRead === 'read') {
-        this.haveRead = 'not-read';
-    } else {
-        this.haveRead = 'read';
+// Book.prototype.idSet = function() {
+//     this.id = this.idCounter;
+// }
+// Book.prototype.info = function() {
+//     return this.title + " by " + this.author + ", " + this.pages + " page(s).";
+// }
+// Book.prototype.toggleRead = function() {
+//     if (this.haveRead === 'read') {
+//         this.haveRead = 'not-read';
+//     } else {
+//         this.haveRead = 'read';
+//     }
+// }
+
+// Class version
+class Book {
+    constructor(title, author, pages, haveRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.haveRead = haveRead;
+    }
+
+    idSet() {
+        this.id = this.idCounter;
+    }
+
+    info() {
+        return this.title + " by " + this.author + ", " + this.pages + " page(s).";
+    }
+
+    toggleRead() {
+        if (this.haveRead === 'read') {
+            this.haveRead = 'not-read';
+        } else {
+            this.haveRead = 'read';
+        }
     }
 }
 
+Book.prototype.idCounter = 0;
+
 function addBookToLibrary(title, author, pages, haveRead) {
-    const newBook = new Book(title, author, pages, haveRead);
+    let newBook = new Book(title, author, pages, haveRead);
     newBook.idSet();
     Book.prototype.idCounter++;
     myLibrary.push(newBook);
