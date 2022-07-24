@@ -168,4 +168,17 @@ function readBookCard(e) {
 
 displayBooks();
 
+author.addEventListener('input', () => {
+    author.setCustomValidity('');
+    author.checkValidity();
+});
+
+author.addEventListener('invalid', () => {
+    if(author.value === '') {
+        author.setCustomValidity('Enter the author\'s name!');
+    } else {
+        author.setCustomValidity('Author\'s name can only contain upper and lowercase letters. Try again!');
+    }
+});
+
 bookForm.addEventListener('submit', addBooks);
