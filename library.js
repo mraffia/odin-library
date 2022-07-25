@@ -181,4 +181,17 @@ author.addEventListener('invalid', () => {
     }
 });
 
+pages.addEventListener('input', () => {
+    pages.setCustomValidity('');
+    pages.checkValidity();
+});
+
+pages.addEventListener('invalid', () => {
+    if(pages.value === '') {
+        pages.setCustomValidity('Enter the number of pages!');
+    } else {
+        pages.setCustomValidity('Number of pages can\'t be under 1 or over 9999!');
+    }
+});
+
 bookForm.addEventListener('submit', addBooks);
